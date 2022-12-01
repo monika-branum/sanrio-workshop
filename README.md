@@ -4,6 +4,8 @@
 
 ### Wireframe
 
+![wireframe](./assets/wireframe%20workshop.clip)
+
 ### Supabase Tables
 
 books clubs:
