@@ -32,6 +32,12 @@ export async function getFanClubs() {
     const response = await client.from('sanrio').select('*, sanrioMembers(*)');
     return checkError(response);
 }
+
+export async function createMember(name) {
+    const response = await client.from('sanrioMembers').insert(name);
+    return checkError(response);
+}
+
 function checkError(response) {
     return response.error ? console.error(response.error) : response.data;
 }
