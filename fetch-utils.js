@@ -1,5 +1,6 @@
-const SUPABASE_URL = '';
-const SUPABASE_KEY = '';
+const SUPABASE_URL = 'https://giwptggnnkyngbvntavn.supabase.co';
+const SUPABASE_KEY =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdpd3B0Z2dubmt5bmdidm50YXZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgxMDg1MDUsImV4cCI6MTk4MzY4NDUwNX0.IpqZ1fOasMiRTSsQIkHj5BOCwSYQSi4zxsS9Hhx76x0';
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 /* Auth related functions */
@@ -27,3 +28,10 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+export async function getFanClubs() {
+    const response = await client.from('sanrio').select('*, sanrioMembers(*)');
+    return checkError(response);
+}
+function checkError(response) {
+    return response.error ? console.error(response.error) : response.data;
+}
