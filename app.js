@@ -19,13 +19,14 @@ async function fetchAndDisplaySanrioClubs() {
     fanClubsList.textContent = '';
 
     const fanClubs = await getFanClubs();
+
     for (let club of fanClubs) {
-        // console.log('club', club);
         const clubEl = renderFanClub(club);
         const membersEl = document.createElement('ul');
-        for (let member of club.members) {
+
+        for (let member of club.sanrioMembers) {
             const memberEl = document.createElement('li');
-            memberEl.textContent = `{member.name} : {member.contactInfo}`;
+            memberEl.textContent = `${member.name} : ${member.contactInfo}`;
             //add delete event listener within the function
             membersEl.append(memberEl);
         }
