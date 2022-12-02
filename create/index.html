@@ -15,7 +15,7 @@
             defer
             src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"
         ></script>
-        <script type="module" src="app.js"></script>
+        <script type="module" src="create.js"></script>
 
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,8 +26,8 @@
         />
 
         <!-- css -->
-        <link rel="stylesheet" href="/styles/reset.css" />
-        <link rel="stylesheet" href="/styles/global.css" />
+        <link rel="stylesheet" href="../styles/reset.css" />
+        <link rel="stylesheet" href="../styles/global.css" />
         <!-- add link for page specific css -->
     </head>
 
@@ -37,14 +37,29 @@
             <p class="title">Supabase Web App</p>
             <nav>
                 <a href="/">Home</a>
-                <a id="create-link" href="create/">Create</a>
                 <a id="sign-out-link" href="auth">Sign Out</a>
             </nav>
         </header>
 
         <main>
-            <h2>Sanrio Fan Clubs</h2>
-            <section class="fan-clubs-list"></section>
+            <form action="">
+                <!-- name -->
+                <label>Name: </label>
+                <input type="text" name="name" />
+
+                <!-- contact info -->
+                <label>Contact Info: </label>
+                <input type="text" name="contact" />
+
+                <!-- fan club options -->
+                <label>Select a Sanrio Fan Club:</label>
+                <select name="club-id" id="">
+                    <!-- club options rendered here -->
+                </select>
+
+                <!-- add member -->
+                <button type="submit">Add member</button>
+            </form>
         </main>
     </body>
 </html>
