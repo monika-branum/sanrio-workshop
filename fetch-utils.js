@@ -38,6 +38,12 @@ export async function createMember(name) {
     return checkError(response);
 }
 
+export async function deleteMember(memberId) {
+    const response = await client.from('sanrioMembers').delete().match({ id: memberId }).single();
+
+    return checkError(response);
+}
+
 function checkError(response) {
     return response.error ? console.error(response.error) : response.data;
 }

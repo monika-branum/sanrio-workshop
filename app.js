@@ -1,9 +1,9 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-// import { deleteMember, getFanClubs } from '.fetch-utils.js';
+import { deleteMember, getFanClubs } from './fetch-utils.js';
 import { renderFanClub } from './render-utils.js';
-import { getFanClubs } from './fetch-utils.js';
+
 /* Get DOM Elements */
 const fanClubsList = document.querySelector('.fan-clubs-list');
 
@@ -28,6 +28,11 @@ async function fetchAndDisplaySanrioClubs() {
             const memberEl = document.createElement('li');
             memberEl.textContent = `${member.name} : ${member.contactInfo}`;
             //add delete event listener within the function
+            memberEl.addEventListener('click', async () => {
+                await deleteMember(member.id);
+                fetchAndDisplaySanrioClubs();
+            });
+
             membersEl.append(memberEl);
         }
         clubEl.append(membersEl);
